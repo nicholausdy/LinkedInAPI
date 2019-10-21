@@ -34,23 +34,25 @@ C. How to Install:
 
   a. Mozilla Firefox (make sure you've got the headless version to reduce overhead)
   
-  b. Python 3.x.x 
+  b. Geckodriver to run Mozilla Firefox
   
-  c. PostgreSQL (v 10.10) as the database back-end (note: configure /path/to/pg_hba.conf file to change user authentication method for both IPv4 and IPv6 from ident to md5)
+  c. Python 3.x.x 
   
-  d. These Python 3 packages (pip install):
+  d. PostgreSQL (v 10.10) as the database back-end (note: configure /path/to/pg_hba.conf file to change user authentication method for both IPv4 and IPv6 from ident to md5)
+  
+  e. These Python 3 packages (pip install):
     
-    d.1. selenium for web browser automation 
+    e.1. selenium for web browser automation 
     
-    d.2. parsel for web scraping
+    e.2. parsel for web scraping
     
-    d.3. subprocess to kill some system processes
+    e.3. subprocess to kill some system processes
     
-    d.4. psycopg2 for interface to PostgreSQL
+    e.4. psycopg2 for interface to PostgreSQL
     
-    d.5. urllib.parse for parsing URL
+    e.5. urllib.parse for parsing URL
     
-    d.6. http.server for web server
+    e.6. http.server for web server
     
     d.7. json for generating JSON format
 
