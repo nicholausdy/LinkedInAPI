@@ -2,6 +2,7 @@
 API to grab account data (name, profession, region), education data (degree and last education institution), and workplace data (current and last workplace) from LinkedIn
 
 A. Architecture in a nutshell:
+
 Server module queries the database to find user id. If it is not found, the server launches the web scraping module using Selenium. If the user id is found by Selenium, then the data will be stored in a local database (PostgreSQL).
 
 B. How to Use:
