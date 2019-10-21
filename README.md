@@ -26,7 +26,9 @@ B. How to Use:
  3. Type the endpoints on browser or HTTP GET from command line
 
 C. How to Install:
+
 1. Prerequisite: OS based on Linux kernel (preferred OS) or Windows (might need some configuration and source code change)
+
 2. Install required dependencies:
 
   a. Mozilla Firefox (make sure you've got the headless version to reduce overhead)
@@ -35,7 +37,7 @@ C. How to Install:
   
   c. PostgreSQL (v 10.10) as the database back-end (note: configure /path/to/pg_hba.conf file to change user authentication method for both IPv4 and IPv6 from ident to md5)
   
-  d. These Python 3 packages:
+  d. These Python 3 packages (pip install):
     
     d.1. selenium for web browser automation 
     
