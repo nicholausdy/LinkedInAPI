@@ -13,17 +13,17 @@ B. How to Use:
 1. Find user ID from LinkedIn URL (ex:https://www.linkedin.com/in/nicholaus-yosodipuro-08222a18b/?originalSubdomain=id -> 08222a18b is the user ID 
 2. There are three endpoints (you can change the domain name and port number on the source code)
     
-    a. http://localhost:8000/users/accounts/general/<user id> -> used to grab account data
+    a. http://localhost:8000/users/accounts/general/{user_id} -> used to grab account data
         
         Ex output:
           {"AccountID": "08222a18b", "AccountName": "Nicholaus Yosodipuro", "AccountTitle": "Information System and Technology Undergraduate Student at Bandung Institute of Technology (ITB)", "AccountRegion": "Greater Jakarta Area, Indonesia"}
     
-    b. http://localhost:8000/users/accounts/education/<user id> -> used to grab education data
+    b. http://localhost:8000/users/accounts/education/{user_id} -> used to grab education data
         
         Ex output:
           {"AccountID": "08222a18b", "EducationInstitution": "Institut Teknologi Bandung (ITB)", "EducationTitle": "Bachelor's degree"}
     
-    c. http://localhost:8000/users/accounts/workplace/<user id> -> used to grab workplace data
+    c. http://localhost:8000/users/accounts/workplace/{user_id} -> used to grab workplace data
         
         Ex output:
           {"AccountID": "805965120", "Workplace1": "Packet Systems Indonesia", "Workplace2": "Telkom University"}
