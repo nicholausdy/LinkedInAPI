@@ -23,6 +23,17 @@ class Parse:
         parts = path.split('/')
         return parts[4]
 
+class Wait:
+    def waitForResponse(server):
+    #tampilan menunggu hasil scrape
+    #khusus untuk ditampilkan jika endpoint diakses melalui web browser
+        server.send_response(200)
+        server.send_header("Content-type","application/json")
+        server.end_headers()
+        wait_message = {'Feedback': 'Account ID not found on database','Message':'Please wait until scraping is finished (2-3 minutes), then reload the page'}
+        server.wfile.write(json.dumps(wait_message).encode())
+        
+
 class Request(http.server.SimpleHTTPRequestHandler):
 # kelas untuk mengurus API reuqest dari pengguna
     def do_GET(self): #method untuk mengurus HTTP verb GET
@@ -30,6 +41,7 @@ class Request(http.server.SimpleHTTPRequestHandler):
             idSearch = Parse.pathID(self.path) #dapatkan id dari hasil parsing
             db_query_result = DBManager.readFromAccount(idSearch) #memperoleh hasil query database dalam bentuk array
             if db_query_result[0] == 'Invalid AccountID': # jika data tidak ditemukan di database, lakukan scraping
+                Wait.waitForResponse(self)
                 scrape_result = Scraper.scrapingAbout(idSearch) 
                 insert_result = DBManager.insertToAccount(scrape_result) #masukkan hasil scraping ke dalam database
                 if insert_result[0] == 'Record inserted successfully into DB':
@@ -57,6 +69,7 @@ class Request(http.server.SimpleHTTPRequestHandler):
             idSearch = Parse.pathID(self.path) #dapatkan id dari hasil parsing
             db_query_result = DBManager.readFromEducation(idSearch) #memperoleh hasil query database dalam bentuk array
             if db_query_result[0] == 'Invalid AccountID': # jika data tidak ditemukan di database, lakukan scraping
+                Wait.waitForResponse(self)
                 scrape_result = Scraper.scrapingEducation(idSearch) 
                 insert_result = DBManager.insertToEducation(scrape_result) #masukkan hasil scraping ke dalam database
                 if insert_result[0] == 'Record inserted successfully into DB':
@@ -84,6 +97,7 @@ class Request(http.server.SimpleHTTPRequestHandler):
             idSearch = Parse.pathID(self.path) #dapatkan id dari hasil parsing
             db_query_result = DBManager.readFromWorkplace(idSearch) #memperoleh hasil query database dalam bentuk array
             if db_query_result[0] == 'Invalid AccountID': # jika data tidak ditemukan di database, lakukan scraping
+                Wait.waitForResponse(self)
                 scrape_result = Scraper.scrapingWorkplace(idSearch) 
                 insert_result = DBManager.insertToWorkplace(scrape_result) #masukkan hasil scraping ke dalam database
                 if insert_result[0] == 'Record inserted successfully into DB':
